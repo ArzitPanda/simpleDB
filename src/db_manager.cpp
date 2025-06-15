@@ -64,6 +64,14 @@ Table DBManager::addTable(const string &filename, const string &table, const vec
 
     char nameBuffer[32] = {0};
     strncpy(nameBuffer, table.c_str(), 31);
+    ofstream fileCache("data/tablecache/table.cache", ios::binary | ios::in| ios::out);
+    if (!fileCache) {
+        std::cerr << "Cannot open table cache" << endl;
+    }
+    fileCache.seekp(0,ios::end);
+    fileCache.write(nameBuffer,32);
+    fileCache.write(reinterpret_cast<char*>(&entryoffset), sizeof(uint64_t));
+
     file.seekp(entryoffset);
     file.write(nameBuffer, 32);
 

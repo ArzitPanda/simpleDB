@@ -64,4 +64,52 @@ void TableManager::printRow(Table &table) {
 
 }
 
+void TableManager::printRow(Table &table, ConditionGroup conditions) {
+
+    bool  value = true;
+
+    ifstream file("data/table/"+table.name+".table", ios::binary | ios::in);
+    uint32_t rowCount = 0;
+    if (!file) {
+        cout << "table not found" << endl;
+        return;
+    }
+    ifstream tableschemaDetailsFile("data/main.db",ios::binary | ios::in);
+    if (!tableschemaDetailsFile) {
+        cout << "tableschema not found" << endl;
+    }
+
+
+
+    file.read(reinterpret_cast<char*>(&rowCount), sizeof(uint32_t));
+    for (uint32_t i = 0; i < rowCount; ++i) {
+
+
+
+
+    }
+
+
+
+
+
+    Condition callback_condition = condition;
+    while (!callback_condition.children.empty()) {
+
+        for (const Condition &child : callback_condition.children) {
+
+        }
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
 
