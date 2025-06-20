@@ -12,7 +12,7 @@ class TableManager {
     public:
         static bool insertRow(const string& tablename,vector<string> &values);
         static  void printRow(Table& table);
-        static  void printRow(Table& table,ConditionGroup conditions);
+        static  void printRow(string &table, ConditionGroup conditions);
 
 };
 

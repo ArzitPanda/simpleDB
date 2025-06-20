@@ -19,20 +19,24 @@ enum  CONDITION_OPERATION {
 };
 
 
-struct  Condition {
+struct Condition {
     std::string columnName;
     std::string tableName;
     CONDITION_TYPE type;
-    auto value=0;
-    Condition(const std::string& columnName, const std::string& tableName, CONDITION_TYPE type, const auto & value)
-       : columnName(columnName) ,tableName(tableName), type(type), value(value) {};
+    std::string value;
+
+    Condition(const std::string& columnName, const std::string& tableName, CONDITION_TYPE type, const std::string& value)
+        : columnName(columnName), tableName(tableName), type(type), value(value) {}
 };
 
-struct  ConditionGroup {
+struct ConditionGroup {
     std::vector<Condition> conditions;
     std::vector<CONDITION_OPERATION> operations;
-    ConditionGroup(std::vector<Condition> conditions, std::vector<CONDITION_OPERATION> operations): conditions(conditions), operations(operations) {};
+
+    ConditionGroup(const std::vector<Condition>& conditions, const std::vector<CONDITION_OPERATION>& operations)
+        : conditions(conditions), operations(operations) {}
 };
+
 
 
 #endif
